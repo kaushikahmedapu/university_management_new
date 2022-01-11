@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id='view_course_tree' model='ir.ui.view'>
+        <field name='name'>uni.course.tree</field>
+        <field name='model'>uni.course</field>
+        <field name='arch' type='xml'>
+            <tree>
+                <field name='course_name'/>
+                <field name='credit_hour'/>
+                <field name='course_code'/>
+            </tree>
+        </field>
+    </record>
+
+    <record id='view_course_form' model='ir.ui.view'>
+        <field name='name'>uni.course.form</field>
+        <field name='model'>uni.course</field>
+        <field name='arch' type='xml'>
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name='course_name'/>
+                            <field name='course_code'/>
+                            <field name='credit_hour'/>
+                            <field name='have_lab'/>
+                        </group>
+                        <group>
+                            <field name='course_description'/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id='view_course_search' model='ir.ui.view'>
+        <field name='name'>uni.course.search</field>
+        <field name='model'>uni.course</field>
+        <field name='arch' type='xml'>
+            <search>
+                <field name='course_name'/>
+                <field name='credit_hour'/>
+                <field name='course_code'/>
+
+                <!-- Group By -->
+                <filter string='Credit' name='group_by_credit_course' context='{"group_by":"credit_hour"}'/>
+            </search>
+        </field>
+    </record>
+
+</odoo>

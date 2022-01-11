@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id='view_student_profile_tree' model='ir.ui.view'>
+        <field name='name'>uni.profile.tree</field>
+        <field name='model'>uni.profile</field>
+        <field name='arch' type='xml'>
+            <tree>
+                <field name='profile_name'/>
+                <field name='profile_id_num'/>
+                <field name='student_profile'/>
+            </tree>
+        </field>
+    </record>
+
+    <record id='view_student_form' model='ir.ui.view'>
+        <field name='name'>uni.profile.form</field>
+        <field name='model'>uni.profile</field>
+        <field name='arch' type='xml'>
+            <form>
+                <group>
+                    <field name='profile_name'/>
+                    <field name='profile_id_num'/>
+                    <field name='student_profile'/>
+                </group>
+            </form>
+        </field>
+    </record>
+</odoo>

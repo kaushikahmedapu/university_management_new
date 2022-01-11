@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id='view_brand_dealer_inherit_search' model='ir.ui.view'>
+        <field name='name'>product.template.inherit.search</field>
+        <field name='model'>product.template</field>
+        <field name='inherit_id' ref='product.product_template_search_view'/>
+        <field name='arch' type='xml'>
+            <xpath expr='//search' position='inside'>
+                <field name='product_brand_ids'/>
+                <field name='dealer_name_ids'/>
+
+                <!-- Adding Group by -->
+                <filter string='Product Brand' name='group_by_brand_product' context='{"group_by":"product_brand_ids"}'/>
+                <filter string='Dealer Name' name='group_by_dealer_product' context='{"group_by":"dealer_name_ids"}'/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id='action_product_brand' model='ir.actions.act_window'>
+        <field name='name'>Product Brand</field>
+        <field name='res_model'>product.brand</field>
+        <field name='view_mode'>tree,form</field>
+    </record>
+
+    <menuitem 
+        id='menu_product_brand' 
+        action='action_product_brand' 
+        name='Product Brand Menu'
+        parent='stock.menu_stock_config_settings'
+        sequence='101'/>
+
+    <record id='action_dealer_name' model='ir.actions.act_window'>
+        <field name='name'>Dealer Name</field>
+        <field name='res_model'>dealer.name</field>
+        <field name='view_mode'>tree,form</field>
+    </record>
+
+    <menuitem 
+        id='menu_dealer_name' 
+        action='action_dealer_name' 
+        name='Dealer Name Menu'
+        parent='stock.menu_stock_config_settings'
+        sequence='102'/>
+
+</odoo>

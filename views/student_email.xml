@@ -1,0 +1,20 @@
+<odoo>
+    <data>
+        <record id="student_email_template" model="mail.template">
+            <field name="name">Student Id: Send by email</field>
+            <field name="model_id" ref="university_management.model_uni_student"/>
+            <!-- <field name="auto_delete" eval="True"/> -->
+            <field name="email_from">${object.prm.email}</field>
+            <field name="email_to">${object.email}</field>
+            <field name="report_template" ref="university_student_report"/>
+            <field name="subject">${object.stu_id_num}</field>
+            <field name="body_html" type="html">
+                <p>
+                    Dear ${object.name},
+                    <br /><br />
+                    <br/>this is your student id ${object.stu_id_num} <br/>
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

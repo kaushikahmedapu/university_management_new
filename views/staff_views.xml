@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id='view_staff_tree' model='ir.ui.view'>
+        <field name='name'>uni.staff.tree</field>
+        <field name='model'>uni.staff</field>
+        <field name='arch' type='xml'>
+            <tree>
+                <field name='name'/>
+            </tree>
+        </field>
+    </record>
+
+    <record id='view_staff_form' model='ir.ui.view'>
+        <field name='name'>uni.staff.form</field>
+        <field name='model'>uni.staff</field>
+        <field name='arch' type='xml'>
+            <form>
+                <header>
+                    <button string='Check ORM Create' type='object' name='create_orm' class='btn btn-primary'/>
+                    <button string='Check ORM Write' type='object' name='write_orm' class='btn btn-success'/>
+                    <button string='Check ORM Unlink' type='object' name='unlink_orm' class='btn btn-danger'/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name='name'/>
+                            <field name='staff_code'/>
+                            <field name='department_ids' widget='many2many_tags'/>
+                            <field name='salary'/>
+                        </group>
+                        <group>
+                            <field name='photo' widget='image' class='oe_avatar'/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id='view_staff_search' model='ir.ui.view'>
+        <field name='name'>uni.staff.search</field>
+        <field name='model'>uni.staff</field>
+        <field name='arch' type='xml'>
+            <search>
+                <field name='name'/>
+                <field name='salary'/>
+            </search>
+        </field>
+    </record>
+
+</odoo>

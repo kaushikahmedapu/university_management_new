@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id='view_faculty_tree' model='ir.ui.view'>
+        <field name='name'>uni.faculty.tree</field>
+        <field name='model'>uni.faculty</field>
+        <field name='arch' type='xml'>
+            <tree>
+                <field name='name'/>
+                <field name='department_id'/>
+                <field name='designation'/>
+            </tree>
+        </field>
+    </record>
+
+    <record id='view_faculty_form' model='ir.ui.view'>
+        <field name='name'>uni.faculty.form</field>
+        <field name='model'>uni.faculty</field>
+        <field name='arch' type='xml'>
+            <form>
+                <header>
+                    <button string='Error Raise' type='object' name='test_user_error' class='btn btn-danger'/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name='first_name'/>
+                            <field name='last_name'/>
+                            <field name='name'/>
+                            <field name='department_id'/>
+                            <field name='faculty_code'/>    
+                            <field name='salary'/>
+                            <field name='designation'/>
+                        </group>
+                        <group>
+                            <field name='course_ids' widget='many2many_tags'/>
+                            <field name='photo' widget='image' class='oe_avatar'/>
+                            <field name='have_address'/>
+                            <field name='address' attrs='{"invisible":[("have_address","=",False)],"required":[("have_address","=",True)]}'/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id='view_faculty_search' model='ir.ui.view'>
+        <field name='name'>uni.faculty.search</field>
+        <field name='model'>uni.faculty</field>
+        <field name='arch' type='xml'>
+            <search>
+                <field name='first_name'/>
+                <field name='last_name'/>
+                <field name='name'/>
+                <field name='department_id'/>
+                <field name='designation'/>
+                <field name='salary'/>
+
+                <!-- Adding Filter -->
+                <filter string='High Salary' name='faculty_high_salary' domain='[("salary","&gt;=",50000)]'/>
+                <separator/>
+                <filter string='Low Salary' name='faculty_low_salary' domain='[("salary","&lt;",50000)]'/>
+            </search>
+        </field>
+    </record>
+
+</odoo>

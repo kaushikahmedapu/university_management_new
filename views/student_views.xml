@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id='view_student_tree' model='ir.ui.view'>
+        <field name='name'>uni.student.tree</field>
+        <field name='model'>uni.student</field>
+        <field name='arch' type='xml'>
+            <tree>
+                <field name='name'/>
+                <field name='stu_id_num'/>
+                <field name='credit_earn'/>
+                <field name='department_id'/>
+            </tree>
+        </field>
+    </record>
+
+    <record id='view_student_form' model='ir.ui.view'>
+        <field name='name'>uni.student.form</field>
+        <field name='model'>uni.student</field>
+        <field name='arch' type='xml'>
+            <form>
+                <header>
+                    <button string='Check ORM' type='object' name='check_orm' class='btn btn-primary'/>
+                    <button string='Check SQL' type='object' name='check_sql' class='btn btn-success'/>
+                    <button name='test_student_cron' type='object' string='Send by email' class='btn btn-primary'/>
+                    <button name='test_student' type='object' string='Send' class='btn btn-primary'/>
+                    <button name='test_student_action' type='object' string='Duplicate' class='btn btn-primary'/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name='name'/>
+                            <field name='stu_id_num'/>
+                            <field name='department_id'/>
+                            
+                            <field name='credit_earn'/>
+                            <field name='prm'/>
+                            <field name='email'/>
+                            <field name='f_id'/>
+                        </group>
+                        <group>
+                            <field name='course_ids' widget='many2many_tags'/>
+                            <field name='photo' widget='image' class='oe_avatar'/>
+                        </group>
+                    </group>
+                    <group>
+                        <notebook>
+                            <page string='Faculty Name'>
+                                <field name="faculty_assign_line">
+                                    <tree editable='bottom'>
+                                        <field name="faculty_id"/>
+                                        <field name="quantity"/>
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <field name="faculty_id"/>
+                                            <field name="quantity"/>
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+                        </notebook>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+               </div>
+            </form>
+        </field>
+    </record>
+
+    <record id='view_student_search' model='ir.ui.view'>
+        <field name='name'>uni.student.search</field>
+        <field name='model'>uni.student</field>
+        <field name='arch' type='xml'>
+            <search>
+                <field name='name'/>
+                <field name='stu_id_num'/>
+                <field name='department_id'/>
+                <field name='credit_earn'/>
+
+                <!-- Group By -->
+                <filter string='Department' name='group_by_department_student' context='{"group_by":"department_id"}'/>
+            </search>
+        </field>
+    </record>
+
+</odoo>
